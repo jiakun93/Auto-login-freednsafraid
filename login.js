@@ -74,8 +74,9 @@ async function loginWithAccount(user, pass) {
     await page.waitForTimeout(1000);
     
     console.log(`📤 ${user} - 提交登录...`);
+    await page.waitForSelector('input[type="submit"][value="Login"]');
     await page.click('input[type="submit"][value="Login"]');
-    
+
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(5000);
     
