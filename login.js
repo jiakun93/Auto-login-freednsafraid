@@ -26,7 +26,7 @@ async function sendTelegram(message) {
 
   const now = new Date();
   const hkTime = new Date(now.getTime() + (8 * 60 * 60 * 1000));
-  const timeStr = hkTime.toISOString().replace('T', ' ').substr(0, 19) + " HKT";
+  const timeStr = hkTime.toISOString().替换('T', ' ').substr(0, 19) + " HKT";
 
   const fullMessage = `🎉 freednsafraid 登录通知\n\n登录时间：${timeStr}\n\n${message}`;
 
@@ -42,63 +42,57 @@ async function sendTelegram(message) {
 }
 
 async function loginWithAccount(user, pass) {
-  console.log(`\n🚀 开始登录账号: ${user}`);
+  console.log(`\n🚀 开始登录 FreeDNS: ${user}`);
   
-  const browser = await chromium.launch({ 
+  const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
-  
+
   let page;
   let result = { user, success: false, message: '' };
-  
+
   try {
     page = await browser.newPage();
     page.setDefaultTimeout(30000);
-    
-    console.log(`📱 ${user} - 正在访问网站...`);
-    await page.goto('https://freedns.afraid.org/zc.php?from=L21lbnUv', { waitUntil: 'networkidle' });
-    await page.waitForTimeout(3000);
-    
-    console.log(`🔑 ${user} - 点击登录按钮...`);
-    await page.click('text=Login', { timeout: 5000 });
-    
+
+    console.log(`📱 ${user} - 打开 FreeDNS 登录页`);
+    await page.goto('https://freedns.afraid.org/zc.php?from=L21lbnUv');
+
     await page.waitForTimeout(2000);
-    
-    console.log(`📝 ${user} - 填写用户名...`);
-    await page.fill('input[name="username"], input[type="text"]', user);
-    await page.waitForTimeout(1000);
-    
-    console.log(`🔒 ${user} - 填写密码...`);
-    await page.fill('input[name="password"], input[type="password"]', pass);
-    await page.waitForTimeout(1000);
-    
-    console.log(`📤 ${user} - 提交登录...`);
-    await page.click('button:has-text("Validate"), input[type="submit"]');
-    
+
+    console.log(`📝 ${user} - 填写邮箱`);
+    await page.fill('input[name="email"]', user);
+
+    console.log(`🔒 ${user} - 填写密码`);
+    await page.fill('input[name="password"]', pass);
+
+    console.log(`📤 ${user} - 提交登录`);
+    await page.click('input[type="submit"], button[type="submit"]');
+
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(5000);
-    
-    // 检查登录是否成功
-    const pageContent = await page.content();
-    
-    if (pageContent.includes('exclusive owner') || pageContent.includes(user)) {
-      console.log(`✅ ${user} - 登录成功`);
+
+    // 判断登录成功（后台页面通常包含 Logout 或 Subdomains）
+    const content = await page.content();
+
+    if (content.includes('Logout') || content.includes('Subdomains')) {
+      console.log(`✅ ${user} 登录成功`);
       result.success = true;
       result.message = `✅ ${user} 登录成功`;
     } else {
-      console.log(`❌ ${user} - 登录失败`);
+      console.log(`❌ ${user} 登录失败`);
       result.message = `❌ ${user} 登录失败`;
     }
-    
+
   } catch (e) {
-    console.log(`❌ ${user} - 登录异常: ${e.message}`);
+    console.log(`❌ ${user} 登录异常: ${e.message}`);
     result.message = `❌ ${user} 登录异常: ${e.message}`;
   } finally {
     if (page) await page.close();
     await browser.close();
   }
-  
+
   return result;
 }
 
