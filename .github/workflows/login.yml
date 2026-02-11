@@ -1,4 +1,4 @@
-name: Netlib Keepalive
+name: freedns.afraid Keepalive
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # 允许手动运行
 
 jobs:
-  auto_login_netlib:
+  auto_login_freedns.afraid:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
