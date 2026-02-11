@@ -80,14 +80,14 @@ async function loginWithAccount(user, pass) {
     await page.waitForTimeout(5000);
     
     // 检查登录是否成功
-    const pageContent = await page.content();
+    const currentUrl = page.url();
     
-    if (pageContent.includes('exclusive owner') || pageContent.includes(user)) {
-      console.log(`✅ ${user} - 登录成功`);
+    if (currentUrl.includes('/menu')) {
+      console.log(`✅ ${user} 登录成功`);
       result.success = true;
       result.message = `✅ ${user} 登录成功`;
     } else {
-      console.log(`❌ ${user} - 登录失败`);
+      console.log(`❌ ${user} 登录失败`);
       result.message = `❌ ${user} 登录失败`;
     }
     
