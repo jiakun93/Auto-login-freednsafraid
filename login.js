@@ -65,7 +65,7 @@ async function loginWithAccount(user, pass) {
     
     // await page.waitForTimeout(2000);
     
-    console.log(`📝 ${user} - 填写用户名...`);
+    conslle.log(`📝 ${user} - 填写用户名...`);
     await page.fill('input[name="username"], input[type="text"]', user);
     await page.waitForTimeout(1000);
     
