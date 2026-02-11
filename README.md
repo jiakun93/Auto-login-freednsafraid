@@ -1,13 +1,11 @@
-## Netlib 自动登录保活脚本
+## freedns.afraid 账户自动登录保活脚本
 这是一个用于自动登录 Netlib 网站以保持账户活跃的脚本，配合 GitHub Actions 实现自动定时执行。
 
-注册地址：https://www.netlib.re
-
-视频教程地址：https://youtu.be/7laVmEfgC9o
+注册地址：https://freedns.afraid.org
 
 
 ### 功能特点
-- 🔐 自动登录 Netlib 账户(单账户或多账户)
+- 🔐 自动登录 freedns.afraid 账户(单账户或多账户)
 - 👥 支持多账户批量处理
 - ⏰ 每60天自动执行一次
 - 📱 执行结果可通过 Telegram 通知
@@ -27,7 +25,7 @@
 4. GitHub Actions 初始手动执行检查是否有配置错误，脚本会自动每60天执行一次,可手动执行
 
 ### 注意事项
-1. 确保 Netlib 账户密码正确
+1. 确保 freedns.afraid 账户密码正确
 2. 首次运行 GitHub Actions 需要授权
 3. 脚本执行时间为 UTC 0:00（香港时间 8:00）
 4. 如果不需要 Telegram 通知，可不配置相关环境变量
