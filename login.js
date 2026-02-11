@@ -28,7 +28,7 @@ async function sendTelegram(message) {
   const hkTime = new Date(now.getTime() + (8 * 60 * 60 * 1000));
   const timeStr = hkTime.toISOString().replace('T', ' ').substr(0, 19) + " HKT";
 
-  const fullMessage = `🎉 Netlib 登录通知\n\n登录时间：${timeStr}\n\n${message}`;
+  const fullMessage = `🎉 freedns.afraid 登录通知\n\n登录时间：${timeStr}\n\n${message}`;
 
   try {
     await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -57,7 +57,7 @@ async function loginWithAccount(user, pass) {
     page.setDefaultTimeout(30000);
     
     console.log(`📱 ${user} - 正在访问网站...`);
-    await page.goto('https://www.netlib.re/', { waitUntil: 'networkidle' });
+    await page.goto('https://freedns.afraid.org/zc.php?from=L21lbnUv', { waitUntil: 'networkidle' });
     await page.waitForTimeout(3000);
     
     console.log(`🔑 ${user} - 点击登录按钮...`);
