@@ -61,7 +61,7 @@ async function loginWithAccount(user, pass) {
 
     await page.waitForTimeout(2000);
 
-    console。log(`📝 ${user} - 填写邮箱`);
+    console.log(`📝 ${user} - 填写邮箱`);
     await page.fill('input[name="username"]', user);
 
     console.log(`🔒 ${user} - 填写密码`);
