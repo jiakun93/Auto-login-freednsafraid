@@ -1,4 +1,4 @@
-name: freedns.afraid Keepalive
+name: freednsafraid Keepalive
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # 允许手动运行
 
 jobs:
-  auto_login_freedns.afraid:
+  auto_login_freednsafraid:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
