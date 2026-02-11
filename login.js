@@ -26,7 +26,7 @@ async function sendTelegram(message) {
 
   const now = new Date();
   const hkTime = new Date(now.getTime() + (8 * 60 * 60 * 1000));
-  const timeStr = hkTime.toISOString().替换('T', ' ').substr(0, 19) + " HKT";
+  const timeStr = hkTime.toISOString().replace('T', ' ').substr(0, 19) + " HKT";
 
   const fullMessage = `🎉 freednsafraid 登录通知\n\n登录时间：${timeStr}\n\n${message}`;
 
@@ -61,8 +61,8 @@ async function loginWithAccount(user, pass) {
 
     await page.waitForTimeout(2000);
 
-    console.log(`📝 ${user} - 填写邮箱`);
-    await page.fill('input[name="email"]', user);
+    console。log(`📝 ${user} - 填写邮箱`);
+    await page.fill('input[name="username"]', user);
 
     console.log(`🔒 ${user} - 填写密码`);
     await page.fill('input[name="password"]', pass);
