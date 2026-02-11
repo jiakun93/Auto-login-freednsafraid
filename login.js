@@ -28,7 +28,7 @@ async function sendTelegram(message) {
   const hkTime = new Date(now.getTime() + (8 * 60 * 60 * 1000));
   const timeStr = hkTime.toISOString().replace('T', ' ').substr(0, 19) + " HKT";
 
-  const fullMessage = `🎉 freedns.afraid 登录通知\n\n登录时间：${timeStr}\n\n${message}`;
+  const fullMessage = `🎉 freednsafraid 登录通知\n\n登录时间：${timeStr}\n\n${message}`;
 
   try {
     await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
