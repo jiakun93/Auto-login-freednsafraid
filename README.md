@@ -1,5 +1,5 @@
 ## freednsafraid 账户自动登录保活脚本
-这是一个用于自动登录 Netlib 网站以保持账户活跃的脚本，配合 GitHub Actions 实现自动定时执行。
+这是一个用于自动登录 freednsafraid 网站以保持账户活跃的脚本，配合 GitHub Actions 实现自动定时执行。
 
 注册地址：https://freedns.afraid.org
 
