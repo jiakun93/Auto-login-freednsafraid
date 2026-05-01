@@ -2,7 +2,7 @@ name: freednsafraid Keepalive
 
 on:
   schedule:
-    - cron: '0 0 1 */4 *'  # 每个月运行一次（时间早上8点）
+    - cron: '0 0 1 */4 *'  # 每4个月运行一次（时间早上8点）
   workflow_dispatch:  # 允许手动运行
 
 jobs:
